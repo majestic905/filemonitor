@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const express = require('express');
+const archiver = require('archiver');
+const {getJobsList} = require('./utils');
 
 function checkDirIsSpecified() {
     if (process.argv.length < 3)
@@ -27,9 +30,6 @@ function checkJobsFileExists() {
     }
 })();
 
-const express = require('express');
-const archiver = require('archiver');
-const {getJobsList} = require('./utils');
 require('./watcher');
 
 const app = express();

@@ -2,7 +2,9 @@
   "name": "filemonitor",
   "version": "1.0.0",
   "scripts": {
-    "start": "node client.js"
+    "develop": "concurrently --kill-others-on-fail \"npm run dev-server\" \"npm run dev-web\"",
+    "dev-server": "nodemon server/server.js",
+    "dev-web": "cd server/web && npm run start"
   },
   "dependencies": {
     "archiver": "^3.1.1",
