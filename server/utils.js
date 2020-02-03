@@ -12,7 +12,7 @@ const path = require('path');
 // 	return path.replace(/\\/g, '/');
 // }
 
-function tree(dir) {
+function fileTree(dir) {
 	const stats = fs.statSync(dir);
 
 	if (stats.isFile()) {
@@ -26,9 +26,9 @@ function tree(dir) {
 	} else if (stats.isDirectory()) {
     return {
       type: 'D', // directory
-      path: dir,
+      // path: dir,
       name: path.basename(dir),
-      children: fs.readdirSync(dir).map(child => tree(path.join(dir, child)))
+      children: fs.readdirSync(dir).map(child => fileTree(path.join(dir, child)))
     }
 	} else {
     return {
@@ -37,4 +37,4 @@ function tree(dir) {
   }
 }
 
-module.exports = {tree};
+module.exports = {fileTree};
